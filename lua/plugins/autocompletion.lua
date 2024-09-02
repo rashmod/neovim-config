@@ -47,8 +47,6 @@ return { -- Autocompletion
 				end,
 			},
 			completion = { completeopt = "menu,menuone,noinsert" },
-
-			-- For an understanding of why these mappings were
 			-- chosen, you will need to read `:help ins-completion`
 			--
 			-- No, but seriously. Please read `:help ins-completion`, it is really good!
