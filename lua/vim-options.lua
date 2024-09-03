@@ -75,6 +75,8 @@ vim.opt.tabstop = 4 -- Number of spaces a <Tab> character occupies
 vim.opt.shiftwidth = 4 -- Number of spaces used for each indentation level
 vim.opt.expandtab = true -- Convert tabs to spaces
 
+vim.o.fileformats = "dos,unix"
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
