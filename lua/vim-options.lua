@@ -28,9 +28,9 @@ vim.opt.showmode = false
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
-vim.schedule(function()
-	vim.opt.clipboard = "unnamedplus"
-end)
+-- vim.schedule(function()
+-- vim.opt.clipboard = "unnamedplus"
+-- end)
 
 -- Enable break indent
 vim.opt.breakindent = true
@@ -110,3 +110,41 @@ vim.keymap.set("n", "<leader>k", "<C-w><C-k>", { desc = "Move focus to the upper
 
 vim.keymap.set("n", "j", "gj", { desc = "Move down a logical line" })
 vim.keymap.set("n", "k", "gk", { desc = "Move up a logical line" })
+
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Move up a logical line" })
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Move up a logical line" })
+
+vim.keymap.set("n", "n", "nzzzv", { desc = "Keep search term in middle of screen" })
+vim.keymap.set("n", "N", "Nzzzv", { desc = "Keep search term in middle of screen" })
+
+-- move text in visual modke
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selected text down" })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selected text up" })
+
+-- keep cursor in place when appending lines
+vim.keymap.set("n", "J", "mzJ`z", { desc = "Keep cursor in place when appending lines" })
+
+vim.keymap.set("n", "<leader>zig", "<cmd>LspRestart<CR>", { desc = "Restart Lsp" })
+
+vim.keymap.set("i", "<C-c>", "<Esc>", { desc = "Escape insert mode" })
+
+vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Preserve the yank buffer when pasting" })
+
+vim.keymap.set({ "n", "x" }, "<leader>d", [["_d]], { desc = "Delete without overwriting paste buffer" })
+
+vim.keymap.set({ "n", "x" }, "<leader>y", [["+y]], { desc = "Yank to system clipboard" })
+vim.keymap.set({ "n", "x" }, "<leader>Y", [["+Y]], { desc = "Yank line to system clipboard" })
+
+vim.keymap.set({ "n", "x" }, "<leader>P", [["+p]], { desc = "Paste from system clipboard" })
+
+vim.keymap.set("n", "<C-K>", "<cmd>cnext<CR>zz", { desc = "Next in quick fix list" })
+vim.keymap.set("n", "<C-J>", "<cmd>cprev<CR>zz", { desc = "Previous in quick fix list" })
+vim.keymap.set("n", "<leader>K", "<cmd>lnext<CR>zz", { desc = "TODO: write a desc (quick fix command)" })
+vim.keymap.set("n", "<leader>J", "<cmd>lprev<CR>zz", { desc = "TODO: write a desc (quick fix command)" })
+
+vim.keymap.set(
+	"n",
+	"<leader>rr",
+	[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+	{ desc = "Replace word under cursor in current buffer" }
+)
